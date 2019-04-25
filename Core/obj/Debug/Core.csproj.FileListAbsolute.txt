@@ -1,0 +1,9 @@
+C:\Users\vrootok\Desktop\dot net\Core\bin\Debug\Core.dll
+C:\Users\vrootok\Desktop\dot net\Core\bin\Debug\Core.pdb
+C:\Users\vrootok\Desktop\dot net\Core\bin\Debug\Dapper.dll
+C:\Users\vrootok\Desktop\dot net\Core\bin\Debug\Dapper.xml
+C:\Users\vrootok\Desktop\dot net\Core\obj\Debug\Core.csprojAssemblyReference.cache
+C:\Users\vrootok\Desktop\dot net\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
+C:\Users\vrootok\Desktop\dot net\Core\obj\Debug\Core.csproj.CopyComplete
+C:\Users\vrootok\Desktop\dot net\Core\obj\Debug\Core.dll
+C:\Users\vrootok\Desktop\dot net\Core\obj\Debug\Core.pdb
