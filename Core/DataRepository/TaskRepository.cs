@@ -82,6 +82,23 @@ namespace Core.DataRepository
                 return result;
             }
         }
+        public Filtriranje GetFiltriranje(int id_proekt,int id_vraboten,int id_status,string naslov,string ime,string prezime)
+        {
+            using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@proekt_id", id_proekt);
+                param.Add("@vraboten_id", id_vraboten);
+                param.Add("@status_id", id_status);
+                param.Add("@naslov", naslov);
+                param.Add("@ime", ime);
+                param.Add("@prezime", prezime);
+                Filtriranje result =
+                    conn.Query<Filtriranje>("spFiltriranje", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return result;
+            }
+        }
+
         public Pozicija GetPozicija(int id_pozicija)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
@@ -93,7 +110,6 @@ namespace Core.DataRepository
                 return result;
             }
         }
-
         public Pozicija DeletePozicija(int id_pozicija)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
