@@ -16,9 +16,9 @@ namespace Core.Handlers
         {
             repo = new TaskRepository();     
         }
-        public Oddel HandlerGetoddel(int idOdel)
+        public Oddel HandlerGetoddel(int id)
         {
-            var oddel = repo.GetOddel(idOdel);
+            var oddel = repo.GetOddel(id);
             return oddel;
         }
         public Oddel HandlerDeleteoddel(int idOdel)

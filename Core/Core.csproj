@@ -50,6 +50,7 @@
     <Compile Include="Contracts\Oddel.cs" />
     <Compile Include="Contracts\Pozicija.cs" />
     <Compile Include="Contracts\Proekt.cs" />
+    <Compile Include="Contracts\Report.cs" />
     <Compile Include="Contracts\Status.cs" />
     <Compile Include="Contracts\Zadaca.cs" />
     <Compile Include="DataRepository\TaskRepository.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Handlers\HandlerFiltriranje.cs" />
     <Compile Include="Handlers\HandlerPozicija.cs" />
     <Compile Include="Handlers\HandlerProekt.cs" />
+    <Compile Include="Handlers\HandlerReport.cs" />
     <Compile Include="Handlers\HandlerStatus.cs" />
     <Compile Include="Handlers\HandlerTask.cs" />
     <Compile Include="Handlers\HandlerVraboten.cs" />

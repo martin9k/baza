@@ -82,6 +82,17 @@ namespace Core.DataRepository
                 return result;
             }
         }
+        public Report GetReport ( int id_vraboten)
+        {
+            using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@vraboten_id", id_vraboten);
+                Report result =
+                    conn.Query<Report>("spReport", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return result;
+            }
+        }
         public Filtriranje GetFiltriranje(int id_proekt,int id_vraboten,int id_status,string naslov,string ime,string prezime)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
@@ -104,7 +115,7 @@ namespace Core.DataRepository
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
                 DynamicParameters param = new DynamicParameters();
-                param.Add("@id_pozicija", id_pozicija);
+                param.Add("@id_pozicija",id_pozicija);
                 Pozicija result =
                     conn.Query<Pozicija>("spGetPozicija", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
@@ -286,7 +297,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_vraboten", id_vraboten);
                 Vraboten result =
-                    conn.Query<Vraboten>("spGetAllVraboteni", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Vraboten>("spGetVraboteni", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }

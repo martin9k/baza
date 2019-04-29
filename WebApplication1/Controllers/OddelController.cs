@@ -22,7 +22,7 @@ namespace WebApplication1.Controllers
 
         [HttpGet]
         [Route("")]
-        public IHttpActionResult GetOddel([FromUri] int id)
+        public IHttpActionResult GetOddel([FromUri]int id)
         {
             try
             {
