@@ -97,6 +97,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\FiltriranjeController.cs" />
+    <Compile Include="Controllers\KredencijalController.cs" />
     <Compile Include="Controllers\OddelController.cs" />
     <Compile Include="Controllers\PozicijaController.cs" />
     <Compile Include="Controllers\ProektController.cs" />

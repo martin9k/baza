@@ -200,7 +200,66 @@ namespace Core.DataRepository
                 return result;
             }
         }
-        public Status GetStatus(int id_status)
+        public Vraboten GetVraboten(int id_vraboten)
+        {
+            using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@id_vraboten", id_vraboten);
+                Vraboten result =
+                    conn.Query<Vraboten>("spGetVraboteni", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return result;
+            }
+        }
+        public Vraboten DeleteVraboten(int id_vraboten)
+        {
+            using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@id_vraboten", id_vraboten);
+                Vraboten result =
+                    conn.Query<Vraboten>("spDeleteVraboteni", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return result;
+            }
+        }
+        public Vraboten PostVraboten(int id_kredencijali, int id_oddel, int id_pozicija, string ime, string prezime, string grad, string adresa, string telefonski_br)
+        {
+            using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@id_kredencijali", id_kredencijali);
+                param.Add("@id_pozicija", id_pozicija);
+                param.Add("@id_oddel", id_oddel);
+                param.Add("@ime", ime);
+                param.Add("@prezime", prezime);
+                param.Add("@grad", grad);
+                param.Add("@adresa", adresa);
+                param.Add("@telefonski_br", telefonski_br);
+                Vraboten result =
+                    conn.Query<Vraboten>("spAddVraboteni", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return result;
+            }
+        }
+        public Vraboten PutVraboten(int id_vraboten, int id_kredencijali, int id_oddel, int id_pozicija, string ime, string prezime, string grad, string adresa, string telefonski_br)
+        {
+            using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@id_vraboten", id_vraboten);
+                param.Add("@id_kredencijali", id_kredencijali);
+                param.Add("@id_pozicija", id_pozicija);
+                param.Add("@id_oddel", id_oddel);
+                param.Add("@ime", ime);
+                param.Add("@prezime", prezime);
+                param.Add("@grad", grad);
+                param.Add("@adresa", adresa);
+                param.Add("@telefonski_br", telefonski_br);
+                Vraboten result =
+                    conn.Query<Vraboten>("spUpdateVraboteni", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return result;
+            }
+        }
+            public Status GetStatus(int id_status)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
@@ -290,65 +349,57 @@ namespace Core.DataRepository
                 return result;
             }
         }
-        public Vraboten GetVraboten(int id_vraboten)
+
+        public Kredencijal GetKredencijal(int id_korisnik)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
                 DynamicParameters param = new DynamicParameters();
-                param.Add("@id_vraboten", id_vraboten);
-                Vraboten result =
-                    conn.Query<Vraboten>("spGetVraboteni", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                param.Add("@id_korisnik", id_korisnik);
+                Kredencijal result =
+                    conn.Query<Kredencijal>("spGetkorisnici", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
-        public Vraboten DeleteVraboten(int id_vraboten)
+        public Kredencijal DeleteKredencijal(int id_korisnik)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
                 DynamicParameters param = new DynamicParameters();
-                param.Add("@id_vraboten", id_vraboten);
-                Vraboten result =
-                    conn.Query<Vraboten>("spDeleteVraboteni", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                param.Add("@id_korisnik", id_korisnik);
+                Kredencijal result =
+                    conn.Query<Kredencijal>("spDeleteKorisnici", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
-        public Vraboten PostVraboten(int id_kredencijali, int id_oddel, int id_pozicija, string ime, string prezime, string grad, string adresa, string telefonski_br)
+        public Kredencijal PutKredencijal(int id_korisnici,string korisnicko_ime,string lozinka,bool aktiven)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
                 DynamicParameters param = new DynamicParameters();
-                param.Add("@id_kredencijali", id_kredencijali);
-                param.Add("@id_pozicija", id_pozicija);
-                param.Add("@id_oddel", id_oddel);
-                param.Add("@ime", ime);
-                param.Add("@prezime", prezime);
-                param.Add("@grad", grad);
-                param.Add("@adresa", adresa);
-                param.Add("@telefonski_br", telefonski_br);
-                Vraboten result =
-                    conn.Query<Vraboten>("spAddVraboteni", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                param.Add("@id_korisnik", id_korisnici);
+                param.Add("@korisnickoIme", korisnicko_ime);
+                param.Add("@lozinka", lozinka);
+                param.Add("@aktiven", aktiven);
+                Kredencijal result =
+                    conn.Query<Kredencijal>("spUpdateKorisnici", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
-        public Vraboten PutVraboten(int id_vraboten, int id_kredencijali, int id_oddel, int id_pozicija, string ime, string prezime, string grad, string adresa, string telefonski_br)
+        public Kredencijal PostKredencijal(string korisnicko_ime, string lozinka,bool aktiven)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
                 DynamicParameters param = new DynamicParameters();
-                param.Add("@id_vraboten", id_vraboten);
-                param.Add("@id_kredencijali", id_kredencijali);
-                param.Add("@id_pozicija", id_pozicija);
-                param.Add("@id_oddel", id_oddel);
-                param.Add("@ime", ime);
-                param.Add("@prezime", prezime);
-                param.Add("@grad", grad);
-                param.Add("@adresa", adresa);
-                param.Add("@telefonski_br", telefonski_br);
-                Vraboten result =
-                    conn.Query<Vraboten>("spUpdateVraboteni", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                param.Add("@korisnickoIme", korisnicko_ime);
+                param.Add("@lozinka", lozinka);
+                param.Add("@aktiven", aktiven);
+                Kredencijal result =
+                    conn.Query<Kredencijal>("spAddKorisnici", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
 
+           
             /*
                     public List<Vraboten> Read
                     {

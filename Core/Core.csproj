@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Contracts\Filtriranje.cs" />
+    <Compile Include="Contracts\Kredencijal.cs" />
     <Compile Include="Contracts\Oddel.cs" />
     <Compile Include="Contracts\Pozicija.cs" />
     <Compile Include="Contracts\Proekt.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="DbAccess\DbConnection.cs" />
     <Compile Include="Handlers\HadlerOddel.cs" />
     <Compile Include="Handlers\HandlerFiltriranje.cs" />
+    <Compile Include="Handlers\HandlerKredencijal.cs" />
     <Compile Include="Handlers\HandlerPozicija.cs" />
     <Compile Include="Handlers\HandlerProekt.cs" />
     <Compile Include="Handlers\HandlerReport.cs" />
