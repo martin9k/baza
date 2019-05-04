@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Contracts
 {
-    public class Pozicija
+    public  class Pozicija
     {
         public int id1 { get; set; }
         public string pozicija { get; set; }

@@ -15,9 +15,14 @@ namespace Core.Handlers
         {
             repo = new TaskRepository();
         }
-        public Proekt HandlerGetproekt(int idStatus)
+        public Proekt HandlerGetproekt(int id_proekt)
+            {
+            var proekt = repo.GetProekt(id_proekt);
+            return proekt;
+            }
+        public List<Proekt> HandlerGetproekti()
         {
-            var stat = repo.GetProekt(idStatus);
+            var stat = repo.GetProekti();
             return stat;
         }
         public Proekt HandlerDeleteproekt(int idStatus)

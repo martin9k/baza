@@ -35,6 +35,21 @@ namespace WebApplication1.Controllers
             }
 
         }
+        [HttpGet]
+        [Route("All")]
+        public IHttpActionResult GetOddeli()
+        {
+            try
+            {
+                var response = handlerOddel.HandlerGetoddeli();
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+
+        }
         [HttpDelete]
         [Route("")]
         public IHttpActionResult DeleteOddel([FromUri] int id)

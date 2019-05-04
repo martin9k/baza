@@ -8,8 +8,7 @@ namespace Core.Contracts
 {
    public class Report
     {
-        int vraboten_id { set; get; }
-        string pozicija { set; get; }
-        int COUNt{ set; get; }
+        string Status { set; get; }
+        int Count{ set; get; }
     }
 }

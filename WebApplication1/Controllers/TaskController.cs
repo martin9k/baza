@@ -49,11 +49,11 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
         [Route("")]
-        public IHttpActionResult PostZadaca([FromUri]int id_proekt, int id_vraboten, int id_status, string datum_na_kreiranje, string datum_na_posledna_promena, string naslov,string opis, int estimacija, bool odobrena)
+        public IHttpActionResult PostZadaca([FromUri]int id_proekt, int id_vraboten, int id_status, string datum_kreiranje, string datum_posledna_promena, string naslov,string opis, int estimacija, bool odobrena)
         {
             try
             {
-                var response = handlerTask.HandlerPostzadaca(id_proekt, id_vraboten, id_status, datum_na_kreiranje, datum_na_posledna_promena, naslov, opis,estimacija, odobrena);
+                var response = handlerTask.HandlerPostzadaca(id_proekt, id_vraboten, id_status, datum_kreiranje, datum_posledna_promena, naslov, opis,estimacija, odobrena);
                 return Ok(response);
             }
             catch (Exception e)

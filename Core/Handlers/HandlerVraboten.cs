@@ -15,6 +15,11 @@ namespace Core.Handlers
         {
             repo = new TaskRepository();
         }
+        public List<Vraboten> HandlerGetvraboteni()
+        {
+            var stat = repo.GetVraboteni();
+            return stat;
+        }
         public Vraboten HandlerGetvraboten(int idVraboten)
         {
             var stat = repo.GetVraboten(idVraboten);

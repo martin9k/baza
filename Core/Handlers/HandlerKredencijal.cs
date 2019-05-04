@@ -21,6 +21,11 @@ namespace Core.Handlers
             var oddel = repo.GetKredencijal(id);
             return oddel;
         }
+        public List<Kredencijal> HandlerGetkredencijali()
+        {
+            var oddel = repo.GetKredencijali();
+            return oddel;
+        }
         public Kredencijal HandlerDeletekredencija(int idOdel)
         {
             var oddel = repo.DeleteKredencijal(idOdel);

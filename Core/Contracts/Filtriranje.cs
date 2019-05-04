@@ -11,8 +11,7 @@ namespace Core.Contracts
         string ime { get; set; }
         string prezime { get; set; }
         string naslov { get; set; }
-        int id_vraboten { get; set; }
-        int id_status { get; set; }
-        int id_proekt { get; set; }
+        string proekt_ime { get; set; }
+        string opis { get; set; }
     }
 }

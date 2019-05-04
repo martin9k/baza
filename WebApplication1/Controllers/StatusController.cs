@@ -32,6 +32,20 @@ namespace WebApplication1.Controllers
                 throw;
             }
         }
+        [HttpGet]
+        [Route("all")]
+        public IHttpActionResult GetStatusi()
+        {
+            try
+            {
+                var response = handlerStatus.HandlerGetstatusi();
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
         [HttpDelete]
         [Route("")]
         public IHttpActionResult DeleteStatus([FromUri] int id3)

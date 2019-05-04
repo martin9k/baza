@@ -32,6 +32,17 @@ namespace Core.DataRepository
                 return result;
             }
         }
+        public List<Oddel> GetOddeli()
+        {
+            using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+            {
+                DynamicParameters param = new DynamicParameters();
+
+                List<Oddel> result =
+                     conn.Query<Oddel>("spGetAllOddel", param, commandType: CommandType.StoredProcedure).ToList();
+                return result;
+            }
+        }
         public Zadaca GetZadaca(int id_zadaca)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
@@ -93,7 +104,7 @@ namespace Core.DataRepository
                 return result;
             }
         }
-        public Filtriranje GetFiltriranje(int id_proekt,int id_vraboten,int id_status,string naslov,string ime,string prezime)
+        public Filtriranje GetFiltriranje(int id_proekt,int id_vraboten,int id_status,string ime,string prezime, string naslov)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
@@ -118,6 +129,17 @@ namespace Core.DataRepository
                 param.Add("@id_pozicija",id_pozicija);
                 Pozicija result =
                     conn.Query<Pozicija>("spGetPozicija", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return result;
+            }
+        }
+        public List<Pozicija> GetPozicii()
+        {
+            using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+            {
+                DynamicParameters param = new DynamicParameters();
+
+                List<Pozicija> result =
+                     conn.Query<Pozicija>("spGetAllPozicija", param, commandType: CommandType.StoredProcedure).ToList();
                 return result;
             }
         }
@@ -200,7 +222,18 @@ namespace Core.DataRepository
                 return result;
             }
         }
-        public Vraboten GetVraboten(int id_vraboten)
+        public List<Vraboten> GetVraboteni()
+        {
+            using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+            {
+                DynamicParameters param = new DynamicParameters();
+
+                List<Vraboten> result =
+                     conn.Query<Vraboten>("spGetAllVraboteni", param, commandType: CommandType.StoredProcedure).ToList();
+                return result;
+            }
+        }
+                public Vraboten GetVraboten(int id_vraboten)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
@@ -259,7 +292,18 @@ namespace Core.DataRepository
                 return result;
             }
         }
-            public Status GetStatus(int id_status)
+        public List<Status> GetStatusi()
+        {
+            using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+            {
+                DynamicParameters param = new DynamicParameters();
+
+                List<Status> result =
+                     conn.Query<Status>("spGetAllStatus", param, commandType: CommandType.StoredProcedure).ToList();
+                return result;
+            }
+        }
+        public Status GetStatus(int id_status)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
@@ -315,6 +359,18 @@ namespace Core.DataRepository
                 return result;
             }
         }
+
+        public List<Proekt> GetProekti()
+        {
+            using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+            {
+                DynamicParameters param = new DynamicParameters();
+
+                List<Proekt> result =
+                     conn.Query<Proekt>("spGetAllProekt", param, commandType: CommandType.StoredProcedure).ToList();
+                return result;
+            }
+        }
         public Proekt DeleteProekt(int id_proekt)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
@@ -349,7 +405,17 @@ namespace Core.DataRepository
                 return result;
             }
         }
+        public List<Kredencijal> GetKredencijali()
+        {
+            using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+            {
+                DynamicParameters param = new DynamicParameters();
 
+                List<Kredencijal> result =
+                     conn.Query<Kredencijal>("spGetAllKorisnici", param, commandType: CommandType.StoredProcedure).ToList();
+                return result;
+            }
+        }
         public Kredencijal GetKredencijal(int id_korisnik)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))

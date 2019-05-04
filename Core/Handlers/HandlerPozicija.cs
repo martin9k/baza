@@ -21,6 +21,11 @@ namespace Core.Handlers
             var pozicija = repo.GetPozicija(idPozicija);
             return pozicija;
         }
+        public List<Pozicija> HandlerGetpozicii ()
+        {
+            var pozicija = repo.GetPozicii();
+            return pozicija;
+        }
         public Pozicija HandlerDeletepozicija(int idPozicija)
         {
             var pozicija = repo.DeletePozicija(idPozicija);

@@ -18,13 +18,27 @@ namespace WebApplication1.Controllers
             {
                 handlerProekt = new HandlerProekt();
             }
-            [HttpGet]
-            [Route("")]
-            public IHttpActionResult GetProekt([FromUri] int id3)
+        [HttpGet]
+        [Route("")]
+        public IHttpActionResult GetProekt(int id_proekt)
+        {
+            try
+            {
+                var response = handlerProekt.HandlerGetproekt(id_proekt);
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+        [HttpGet]
+            [Route("all")]
+            public IHttpActionResult GetProekti()
             {
                 try
                 {
-                    var response = handlerProekt.HandlerGetproekt(id3);
+                    var response = handlerProekt.HandlerGetproekti();
                     return Ok(response);
                 }
                 catch (Exception e)

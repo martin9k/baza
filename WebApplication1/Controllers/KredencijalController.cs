@@ -32,6 +32,20 @@ namespace WebApplication1.Controllers
                 throw;
             }
         }
+        [HttpGet]
+        [Route("all")]
+        public IHttpActionResult GetKredencijali()
+        {
+            try
+            {
+                var response = handlerKredencijal.HandlerGetkredencijali();
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
         [HttpDelete]
         [Route("")]
         public IHttpActionResult DeleteKredencijal([FromUri] int id4)

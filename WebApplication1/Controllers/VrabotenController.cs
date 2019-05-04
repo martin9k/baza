@@ -33,6 +33,20 @@ namespace WebApplication1.Controllers
                 throw;
             }
         }
+        [HttpGet]
+        [Route("all")]
+        public IHttpActionResult GetVraboteni()
+        {
+            try
+            {
+                var response = handlerVraboten.HandlerGetvraboteni();
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
         [HttpDelete]
         [Route("")]
         public IHttpActionResult DeleteVraboten([FromUri] int id4)

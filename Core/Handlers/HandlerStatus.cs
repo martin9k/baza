@@ -20,6 +20,11 @@ namespace Core.Handlers
             var stat = repo.GetStatus(idStatus);
             return stat;
         }
+        public List<Status> HandlerGetstatusi()
+        {
+            var stat = repo.GetStatusi();
+            return stat;
+        }
         public Status HandlerDeletestatus(int idStatus)
         {
             var stat = repo.DeleteStatus(idStatus);

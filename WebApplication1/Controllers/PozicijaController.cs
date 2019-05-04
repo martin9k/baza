@@ -32,6 +32,20 @@ namespace WebApplication1.Controllers
                 throw;
             }
         }
+        [HttpGet]
+        [Route("all")]
+        public IHttpActionResult GetPozicii()
+        {
+            try
+            {
+                var response = handlerPozicija.HandlerGetpozicii();
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
         [HttpDelete]
         [Route("")]
         public IHttpActionResult DeletePozicija([FromUri] int id1)

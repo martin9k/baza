@@ -21,6 +21,11 @@ namespace Core.Handlers
             var oddel = repo.GetOddel(id);
             return oddel;
         }
+        public List<Oddel> HandlerGetoddeli()
+        {
+            var oddel = repo.GetOddeli();
+            return oddel;
+        }
         public Oddel HandlerDeleteoddel(int idOdel)
         {
             var oddel = repo.DeleteOddel(idOdel);
