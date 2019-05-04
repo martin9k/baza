@@ -8,7 +8,7 @@ namespace Core.Contracts
 {
    public class Report
     {
-        string Status { set; get; }
-        int Count{ set; get; }
+      public  string Status { set; get; }
+      public  int Count{ set; get; }
     }
 }

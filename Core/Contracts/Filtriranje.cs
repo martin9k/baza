@@ -8,10 +8,10 @@ namespace Core.Contracts
 {
    public class Filtriranje
     {
-        string ime { get; set; }
-        string prezime { get; set; }
-        string naslov { get; set; }
-        string proekt_ime { get; set; }
-        string opis { get; set; }
+      public  string ime { get; set; }
+      public string prezime { get; set; }
+      public string naslov { get; set; }
+      public string proekt_ime { get; set; }
+      public string opis { get; set; }
     }
 }

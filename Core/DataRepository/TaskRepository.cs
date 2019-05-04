@@ -348,6 +348,7 @@ namespace Core.DataRepository
                 return result;
             }
         }
+        
         public Proekt GetProekt(int id_proekt)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
@@ -359,7 +360,6 @@ namespace Core.DataRepository
                 return result;
             }
         }
-
         public List<Proekt> GetProekti()
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))

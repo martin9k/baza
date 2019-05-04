@@ -7,7 +7,7 @@ namespace Core.Contracts
 {
     public class Proekt
     {
-     int id { get; set; }
-     string proekt_ime { get; set; }
+      public int id { get; set; }
+     public string proekt_ime { get; set; }
     }
 }

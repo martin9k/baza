@@ -8,8 +8,8 @@ namespace Core.Contracts
 {
    public class Kredencijal
     {
-        string korisnicko_ime { set; get; }
-        string lozinka { set; get; }
-        bool aktiven { set; get; }
+      public  string korisnickoIme { set; get; }
+      public  string lozinka { set; get; }
+      public  bool aktiven { set; get; }
     }
 }
