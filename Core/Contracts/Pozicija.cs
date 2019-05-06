@@ -8,7 +8,7 @@ namespace Core.Contracts
 {
     public  class Pozicija
     {
-        public int id1 { get; set; }
-        public string pozicija { get; set; }
+        public int id_pozicija { set; get; }
+        public string pozicija { set; get; }
     }
 }

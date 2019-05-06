@@ -8,7 +8,7 @@ namespace Core.Contracts
 {
   public  class Status
     {
-        public int id3 { get; set; }
+        public int id_status { get; set; }
         public string opis { get; set; }
     }
 }

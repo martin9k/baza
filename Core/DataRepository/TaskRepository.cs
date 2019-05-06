@@ -28,7 +28,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_zadaca", id_zadaca);
                 Zadaca result =
-                    conn.Query<Zadaca>("spDeleteTask", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Zadaca>(ConfigurationManager.AppSettings["spIzbrisiZadaca"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -39,7 +39,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
 
                 List<Oddel> result =
-                     conn.Query<Oddel>("spGetAllOddel", param, commandType: CommandType.StoredProcedure).ToList();
+                     conn.Query<Oddel>(ConfigurationManager.AppSettings["spZemiOddeli"], param, commandType: CommandType.StoredProcedure).ToList();
                 return result;
             }
         }
@@ -50,7 +50,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_zadaca", id_zadaca);
                 Zadaca result =
-                    conn.Query<Zadaca>("spGetTask", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Zadaca>(ConfigurationManager.AppSettings["spZemiZadaca"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -70,7 +70,7 @@ namespace Core.DataRepository
                 param.Add("@estimacija", estimacija);
                 param.Add("@odobrena", odobrena);
                 Zadaca result =
-                    conn.Query<Zadaca>("spUpdateTask", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Zadaca>(ConfigurationManager.AppSettings["spIzmeniZadaca"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -89,7 +89,7 @@ namespace Core.DataRepository
                 param.Add("@estimacija", estimacija);
                 param.Add("@odobrena", odobrena);
                 Zadaca result =
-                    conn.Query<Zadaca>("spAddTask", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Zadaca>(ConfigurationManager.AppSettings["spDodadiZadaca"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -100,7 +100,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@vraboten_id", id_vraboten);
                 Report result =
-                    conn.Query<Report>("spReport", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Report>(ConfigurationManager.AppSettings["spIzvestaj"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -116,7 +116,7 @@ namespace Core.DataRepository
                 param.Add("@ime", ime);
                 param.Add("@prezime", prezime);
                 Filtriranje result =
-                    conn.Query<Filtriranje>("spFiltriranje", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Filtriranje>(ConfigurationManager.AppSettings["spFilter"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -128,7 +128,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_pozicija",id_pozicija);
                 Pozicija result =
-                    conn.Query<Pozicija>("spGetPozicija", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Pozicija>(ConfigurationManager.AppSettings["spZemiPozicija"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -139,7 +139,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
 
                 List<Pozicija> result =
-                     conn.Query<Pozicija>("spGetAllPozicija", param, commandType: CommandType.StoredProcedure).ToList();
+                     conn.Query<Pozicija>(ConfigurationManager.AppSettings["spZemiPozicii"], param, commandType: CommandType.StoredProcedure).ToList();
                 return result;
             }
         }
@@ -150,7 +150,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_pozicija", id_pozicija);
                 Pozicija result =
-                    conn.Query<Pozicija>("spDeletePozicija", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Pozicija>(ConfigurationManager.AppSettings["spIzbrisiPozicija"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -161,7 +161,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@pozicija", pozicija);
                 Pozicija result =
-                    conn.Query<Pozicija>("spAddPozicija", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Pozicija>(ConfigurationManager.AppSettings["spFilter"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -173,7 +173,7 @@ namespace Core.DataRepository
                 param.Add("@id_pozicija", id_pozicija);
                 param.Add("@pozicija", pozicija);
                 Pozicija result =
-                    conn.Query<Pozicija>("spUpdatePozicija", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Pozicija>(ConfigurationManager.AppSettings["spIzmeniPozicija"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -184,7 +184,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_oddel", id_oddel);
                 Oddel result =
-                    conn.Query<Oddel>("spGetOddel", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Oddel>(ConfigurationManager.AppSettings["spZemiOddel"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -195,7 +195,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_oddel", id_oddel);
                 Oddel result =
-                    conn.Query<Oddel>("spDeleteOddel", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Oddel>(ConfigurationManager.AppSettings["spIzbrisiOddel"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -206,7 +206,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@oddel", oddel);
                 Oddel result =
-                    conn.Query<Oddel>("spAddOddel", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Oddel>(ConfigurationManager.AppSettings["spDodadiOddel"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -218,7 +218,7 @@ namespace Core.DataRepository
                 param.Add("@id_oddel", id_oddel);
                 param.Add("@oddel", oddel);
                 Oddel result =
-                    conn.Query<Oddel>("spUpdateOddel", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Oddel>(ConfigurationManager.AppSettings["spIzmeniOddel"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -229,7 +229,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
 
                 List<Vraboten> result =
-                     conn.Query<Vraboten>("spGetAllVraboteni", param, commandType: CommandType.StoredProcedure).ToList();
+                     conn.Query<Vraboten>(ConfigurationManager.AppSettings["spZemiVraboteni"], param, commandType: CommandType.StoredProcedure).ToList();
                 return result;
             }
         }
@@ -240,7 +240,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_vraboten", id_vraboten);
                 Vraboten result =
-                    conn.Query<Vraboten>("spGetVraboteni", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Vraboten>(ConfigurationManager.AppSettings["spZemiVraboten"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -251,7 +251,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_vraboten", id_vraboten);
                 Vraboten result =
-                    conn.Query<Vraboten>("spDeleteVraboteni", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Vraboten>(ConfigurationManager.AppSettings["spIzbrisiVraboten"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -269,7 +269,7 @@ namespace Core.DataRepository
                 param.Add("@adresa", adresa);
                 param.Add("@telefonski_br", telefonski_br);
                 Vraboten result =
-                    conn.Query<Vraboten>("spAddVraboteni", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Vraboten>(ConfigurationManager.AppSettings["spDodadiVraboten"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -288,7 +288,7 @@ namespace Core.DataRepository
                 param.Add("@adresa", adresa);
                 param.Add("@telefonski_br", telefonski_br);
                 Vraboten result =
-                    conn.Query<Vraboten>("spUpdateVraboteni", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Vraboten>(ConfigurationManager.AppSettings["spIzmeniVraboten"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -299,7 +299,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
 
                 List<Status> result =
-                     conn.Query<Status>("spGetAllStatus", param, commandType: CommandType.StoredProcedure).ToList();
+                     conn.Query<Status>(ConfigurationManager.AppSettings["spZemiStatusi"], param, commandType: CommandType.StoredProcedure).ToList();
                 return result;
             }
         }
@@ -310,7 +310,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_status", id_status);
                 Status result =
-                    conn.Query<Status>("spGetStatus", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Status>(ConfigurationManager.AppSettings["spZemiStatus"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -321,7 +321,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_status", id_status);
                 Status result =
-                    conn.Query<Status>("spDeleteStatus", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Status>(ConfigurationManager.AppSettings["spIzbrisiStatus"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -333,7 +333,7 @@ namespace Core.DataRepository
                 param.Add("@id_status", id_status);
                 param.Add("@opis", opis);
                 Status result =
-                    conn.Query<Status>("spUpdateStatus", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Status>(ConfigurationManager.AppSettings["spIzmeniStatus"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -344,7 +344,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@opis", opis);
                 Status result =
-                    conn.Query<Status>("spAddStatus", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Status>(ConfigurationManager.AppSettings["spDodadiStatus"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -356,7 +356,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_proekt", id_proekt);
                 Proekt result =
-                    conn.Query<Proekt>("spGetProekt", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Proekt>(ConfigurationManager.AppSettings["spZemiProekt"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -367,7 +367,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
 
                 List<Proekt> result =
-                     conn.Query<Proekt>("spGetAllProekt", param, commandType: CommandType.StoredProcedure).ToList();
+                     conn.Query<Proekt>(ConfigurationManager.AppSettings["spZemiProekti"], param, commandType: CommandType.StoredProcedure).ToList();
                 return result;
             }
         }
@@ -378,7 +378,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_proekt", id_proekt);
                 Proekt result =
-                    conn.Query<Proekt>("spDeleteProekt", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Proekt>(ConfigurationManager.AppSettings["spIzbrisiProekt"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -390,7 +390,7 @@ namespace Core.DataRepository
                 param.Add("@id_proekt", id_proekt);
                 param.Add("@proekt_ime", proekt_ime);
                 Proekt result =
-                    conn.Query<Proekt>("spUpdateProekt", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Proekt>(ConfigurationManager.AppSettings["spIzmeniProekt"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -401,7 +401,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@proekt_ime", proekt_ime);
                 Proekt result =
-                    conn.Query<Proekt>("spAddProekt", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Proekt>(ConfigurationManager.AppSettings["spDodadiProekt"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -412,7 +412,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
 
                 List<Kredencijal> result =
-                     conn.Query<Kredencijal>("spGetAllKorisnici", param, commandType: CommandType.StoredProcedure).ToList();
+                     conn.Query<Kredencijal>(ConfigurationManager.AppSettings["spZemiKorisnici"], param, commandType: CommandType.StoredProcedure).ToList();
                 return result;
             }
         }
@@ -423,7 +423,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_korisnik", id_korisnik);
                 Kredencijal result =
-                    conn.Query<Kredencijal>("spGetkorisnici", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Kredencijal>(ConfigurationManager.AppSettings["spZemiKorisnik"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -434,7 +434,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_korisnik", id_korisnik);
                 Kredencijal result =
-                    conn.Query<Kredencijal>("spDeleteKorisnici", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Kredencijal>(ConfigurationManager.AppSettings["spIzbrisiKorisnik"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -448,7 +448,7 @@ namespace Core.DataRepository
                 param.Add("@lozinka", lozinka);
                 param.Add("@aktiven", aktiven);
                 Kredencijal result =
-                    conn.Query<Kredencijal>("spUpdateKorisnici", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Kredencijal>(ConfigurationManager.AppSettings["spIzmeniKorisnik"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
@@ -461,7 +461,7 @@ namespace Core.DataRepository
                 param.Add("@lozinka", lozinka);
                 param.Add("@aktiven", aktiven);
                 Kredencijal result =
-                    conn.Query<Kredencijal>("spAddKorisnici", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Kredencijal>(ConfigurationManager.AppSettings["spDodadiKorisnik"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
 

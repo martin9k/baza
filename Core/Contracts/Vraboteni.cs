@@ -2,10 +2,7 @@
 {
     public class Vraboten
     {
-        public int id1 { get; set; }
-        public int id2 { get; set; }
-        public int id3 { get; set; }
-        public int id4 { get; set; }
+        public int id_vraboten { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string Grad { get; set; }
