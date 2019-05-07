@@ -161,7 +161,7 @@ namespace Core.DataRepository
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@pozicija", pozicija);
                 Pozicija result =
-                    conn.Query<Pozicija>(ConfigurationManager.AppSettings["spFilter"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    conn.Query<Pozicija>(ConfigurationManager.AppSettings["spDodadiPozicija"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
