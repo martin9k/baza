@@ -20,6 +20,11 @@ namespace Core.Handlers
             var stat = repo.GetZadaca(idTask);
             return stat;
         }
+        public List<Zadaca> HandlerGetzadaci()
+        {
+            var stat = repo.GetZadaci();
+            return stat;
+        }
         public Zadaca HandlerDeletezadaca(int idTask)
         {
             var stat = repo.DeleteZadaca(idTask);

@@ -32,6 +32,20 @@ namespace WebApplication1.Controllers
                 throw;
             }
         }
+        [HttpGet]
+        [Route("all")]
+        public IHttpActionResult GetZadaci()
+        {
+            try
+            {
+                var response = handlerTask.HandlerGetzadaci();
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
         [HttpDelete]
         [Route("")]
         public IHttpActionResult DeleteZadaca([FromUri] int id4)

@@ -43,6 +43,16 @@ namespace Core.DataRepository
                 return result;
             }
         }
+        public List<Zadaca> GetZadaci()
+        {
+            using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+            {
+                DynamicParameters param = new DynamicParameters();
+                List<Zadaca> result =
+                    conn.Query<Zadaca>(ConfigurationManager.AppSettings["spZemiZadaci"], param, commandType: CommandType.StoredProcedure).ToList();
+                return result;
+            }
+        }
         public Zadaca GetZadaca(int id_zadaca)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
