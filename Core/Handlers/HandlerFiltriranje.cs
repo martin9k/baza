@@ -15,9 +15,9 @@ namespace Core.Handlers
         {
             repo = new TaskRepository();
         }
-        public Filtriranje HandlerGetFiltriranje(int id_proekt, int id_vraboten, int id_status, string ime, string prezime, string naslov)
+        public List<Filtriranje> HandlerGetFiltriranje(string id_proekt, string id_vraboten, string id_status, string ime, string prezime, string naslov)
         {
-            var filtriranje = repo.GetFiltriranje(id_proekt,id_status,id_vraboten,ime,prezime,naslov);
+            var filtriranje = repo.GetFiltriranje(id_proekt,id_vraboten, id_status,ime, prezime,naslov);
             return filtriranje;
         }
     }

@@ -15,7 +15,7 @@ namespace Core.Handlers
         {
             repo = new TaskRepository();
         }
-        public Report HandlerGetReport(int id_vraboten)
+        public List <Report> HandlerGetReport(int id_vraboten)
         {
             var report = repo.GetReport(id_vraboten);
             return report;

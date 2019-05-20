@@ -103,18 +103,18 @@ namespace Core.DataRepository
                 return result;
             }
         }
-        public Report GetReport ( int id_vraboten)
+        public List <Report> GetReport ( int id_vraboten)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@vraboten_id", id_vraboten);
-                Report result =
-                    conn.Query<Report>(ConfigurationManager.AppSettings["spIzvestaj"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    List <Report> result =
+                    conn.Query<Report>(ConfigurationManager.AppSettings["spIzvestaj"], param, commandType: CommandType.StoredProcedure).ToList();
                 return result;
             }
         }
-        public Filtriranje GetFiltriranje(int id_proekt,int id_vraboten,int id_status,string ime,string prezime, string naslov)
+        public List<Filtriranje> GetFiltriranje(string id_proekt,string id_vraboten,string id_status,string ime,string prezime, string naslov)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
@@ -125,8 +125,8 @@ namespace Core.DataRepository
                 param.Add("@naslov", naslov);
                 param.Add("@ime", ime);
                 param.Add("@prezime", prezime);
-                Filtriranje result =
-                    conn.Query<Filtriranje>(ConfigurationManager.AppSettings["spFilter"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+               List<Filtriranje> result =
+                    conn.Query<Filtriranje>(ConfigurationManager.AppSettings["spFilter"], param, commandType: CommandType.StoredProcedure).ToList();
                 return result;
             }
         }

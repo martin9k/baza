@@ -20,11 +20,11 @@ namespace WebApplication1.Controllers
         }
         [HttpGet]
         [Route("")]
-        public IHttpActionResult GetFiltriranje([FromUri] int id_proekt, int id_vraboten, int id_status, string naslov, string ime, string prezime)
+        public IHttpActionResult GetFiltriranje([FromUri] string id_proekt = null, string id_vraboten = null, string id_status = null, string naslov = null, string ime = null, string prezime = null)
         {
             try
             {
-                var response = handlerFiltriranje.HandlerGetFiltriranje(id_proekt, id_status, id_vraboten, ime, prezime, naslov);
+                var response = handlerFiltriranje.HandlerGetFiltriranje(id_proekt,id_vraboten, id_status, ime, prezime, naslov);
                 return Ok(response);
             }
             catch (Exception e)
