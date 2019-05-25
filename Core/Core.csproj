@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Contracts\Filtriranje.cs" />
+    <Compile Include="Contracts\Korisnik.cs" />
     <Compile Include="Contracts\Kredencijal.cs" />
     <Compile Include="Contracts\Oddel.cs" />
     <Compile Include="Contracts\Pozicija.cs" />

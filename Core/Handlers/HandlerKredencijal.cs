@@ -21,6 +21,11 @@ namespace Core.Handlers
             var oddel = repo.GetKredencijal(id);
             return oddel;
         }
+        public Korisnik HandlerGetKorsnik(string korisnickoIme, string lozinka)
+        {
+            var korisnik = repo.GetKorisnik(korisnickoIme, lozinka);
+            return korisnik;
+        }
         public List<Kredencijal> HandlerGetkredencijali()
         {
             var oddel = repo.GetKredencijali();

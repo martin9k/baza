@@ -63,11 +63,11 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
         [Route("")]
-        public IHttpActionResult PostZadaca([FromUri]int id_proekt, int id_vraboten, int id_status, string datum_kreiranje, string datum_posledna_promena, string naslov,string opis, int estimacija, bool odobrena)
+        public IHttpActionResult PostZadaca([FromUri]int id_proekt, int id_vraboten,string naslov,string opis, int estimacija)
         {
             try
             {
-                var response = handlerTask.HandlerPostzadaca(id_proekt, id_vraboten, id_status, datum_kreiranje, datum_posledna_promena, naslov, opis,estimacija, odobrena);
+                var response = handlerTask.HandlerPostzadaca(id_proekt, id_vraboten, naslov, opis, estimacija);
                 return Ok(response);
             }
             catch (Exception e)
@@ -89,5 +89,20 @@ namespace WebApplication1.Controllers
                 throw;
             }
         }
+        [HttpPut]
+        [Route("update")]
+        public IHttpActionResult UpdateStatus([FromUri]int id_zadaca,int id_status)
+        {
+            try
+            {
+                var response = handlerTask.HandlerUpdateStatus(id_zadaca, id_status);
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
     }
 }
+

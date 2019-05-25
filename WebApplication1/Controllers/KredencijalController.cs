@@ -32,6 +32,26 @@ namespace WebApplication1.Controllers
                 throw;
             }
         }
+        [HttpGet]
+        [Route("validacija")]
+        public IHttpActionResult GetKorisnik([FromUri] string korisnickoime,string lozinka)
+        {
+            try
+            { var  response = handlerKredencijal.HandlerGetKorsnik(korisnickoime,lozinka);
+              return Ok(response);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+                throw;
+            }
+        }
+
+        private IHttpActionResult BadRequest(Exception e)
+        {
+            throw new NotImplementedException();
+        }
+
         [HttpDelete]
         [Route("")]
         public IHttpActionResult DeleteKredencijal([FromUri] int id4)

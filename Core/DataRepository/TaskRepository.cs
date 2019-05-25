@@ -64,7 +64,19 @@ namespace Core.DataRepository
                 return result;
             }
         }
-               public Zadaca PutZadaca(int id_zadaca, int id_proekt, int id_vraboten, int id_status, string datum_kreiranje, string datum_posledna_promena, string naslov,string opis,int estimacija, bool odobrena)
+        public Korisnik GetKorisnik(string korisnickoIme, string lozinka)
+        {
+            using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@korisnickoIme", korisnickoIme);
+                param.Add("@lozinka", lozinka);
+                Korisnik korisnik=
+                    conn.Query<Korisnik>(ConfigurationManager.AppSettings["spValidacija"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return korisnik;
+            }
+        }
+        public Zadaca PutZadaca(int id_zadaca, int id_proekt, int id_vraboten, int id_status, string datum_kreiranje, string datum_posledna_promena, string naslov, string opis, int estimacija, bool odobrena)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
@@ -84,16 +96,26 @@ namespace Core.DataRepository
                 return result;
             }
         }
-        public Zadaca PostZadaca(int id_proekt, int id_vraboten, int id_status, string datum_kreiranje, string datum_posledna_promena, string naslov,string opis, int estimacija, bool odobrena)
+            public Zadaca UpdateStatus(int id_zadaca,int id_status)
+            {
+                using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+                {
+                    DynamicParameters param = new DynamicParameters();
+                    param.Add("@id_zadaca", id_zadaca);
+                    param.Add("@id_status", id_status);
+                    Zadaca result =
+                        conn.Query<Zadaca>(ConfigurationManager.AppSettings["spUpdateZadacaStatus"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    return result;
+                }
+            }
+        public Zadaca PostZadaca(int id_proekt, int id_vraboten,string naslov,string opis, int estimacija,bool odobrena,int id_status)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_vraboten", id_vraboten);
-                param.Add("@id_proekt", id_proekt);
                 param.Add("@id_status", id_status);
-                param.Add("@datum_kreiranje", datum_kreiranje);
-                param.Add("@datum_posledna_promena", datum_posledna_promena);
+                param.Add("@id_proekt", id_proekt);
                 param.Add("@naslov", naslov);
                 param.Add("@opis", opis);
                 param.Add("@estimacija", estimacija);

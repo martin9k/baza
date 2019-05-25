@@ -15,5 +15,8 @@ namespace Core.Contracts
         public int estimacija { get; set; }
         public string datum_kreiranje { get; set; }
        public string datum_posledna_promena{ get; set; }
+        public string ime { get; set; }
+        public string prezime { get; set; }
+        public string proekt_ime { get; set; }
     }
 }

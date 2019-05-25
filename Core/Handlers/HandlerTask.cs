@@ -30,14 +30,19 @@ namespace Core.Handlers
             var stat = repo.DeleteZadaca(idTask);
             return stat;
         }
-        public Zadaca HandlerPostzadaca(int idproekt,int idvrab,int idstaus,string datumk,string datump,string naslov,string opis,int est,bool odob)
+        public Zadaca HandlerPostzadaca(int idproekt, int idvrab, string naslov, string opis, int est, bool odo = false, int idstatus = 1)
         {
-            var stat = repo.PostZadaca(idproekt,idvrab,idstaus,datumk,datump,naslov,opis,est,odob);
+            var stat = repo.PostZadaca(idproekt,idvrab,naslov,opis,est,odo,idstatus);
             return stat;
         }
         public Zadaca HandlerPutzadaca(int idzad,int idproekt, int idvrab, int idstaus, string datumk, string datump, string naslov,string opis, int est, bool odob)
         {
             var stat = repo.PutZadaca(idzad,idproekt, idvrab, idstaus, datumk, datump, naslov,opis,est, odob);
+            return stat;
+        }
+        public Zadaca HandlerUpdateStatus(int idzad, int idstaus)
+        {
+            var stat = repo.UpdateStatus(idzad,idstaus);
             return stat;
         }
     }
