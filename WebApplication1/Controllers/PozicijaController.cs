@@ -55,6 +55,10 @@ namespace WebApplication1.Controllers
                 var response = handlerPozicija.HandlerDeletepozicija(id1);
                 return Ok(response);
             }
+            catch (ArgumentException ex)
+            {
+                return NotFound();
+            }
             catch (Exception e)
             {
                 throw;
@@ -83,6 +87,10 @@ namespace WebApplication1.Controllers
             {
                 var response = handlerPozicija.HandlerPutpozicija(id, ime);
                 return Ok(response);
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound();
             }
             catch (Exception e)
             {

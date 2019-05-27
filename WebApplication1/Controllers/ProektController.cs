@@ -55,7 +55,11 @@ namespace WebApplication1.Controllers
                     var response = handlerProekt.HandlerDeleteproekt(id3);
                     return Ok(response);
                 }
-                catch (Exception e)
+            catch (ArgumentException ex)
+            {
+                return NotFound();
+            }
+            catch (Exception e)
                 {
                     throw;
                 }
@@ -84,7 +88,11 @@ namespace WebApplication1.Controllers
                     var response = handlerProekt.HandlerPutproekt(id, ime);
                     return Ok(response);
                 }
-                catch (Exception e)
+            catch (ArgumentException ex)
+            {
+                return NotFound();
+            }
+            catch (Exception e)
                 {
                     throw;
                 }

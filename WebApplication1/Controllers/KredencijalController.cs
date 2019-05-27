@@ -61,6 +61,10 @@ namespace WebApplication1.Controllers
                 var response = handlerKredencijal.HandlerDeletekredencija(id4);
                 return Ok(response);
             }
+            catch (ArgumentException ex)
+            {
+                return NotFound();
+            }
             catch (Exception e)
             {
                 throw;
@@ -88,6 +92,10 @@ namespace WebApplication1.Controllers
             {
                 var response = handlerKredencijal.HandlerPutkredencijal(id_Kredencijal,korisnickoIme,lozinka,aktiven);
                 return Ok(response);
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound();
             }
             catch (Exception e)
             {

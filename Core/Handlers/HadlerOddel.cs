@@ -28,7 +28,9 @@ namespace Core.Handlers
         }
         public Oddel HandlerDeleteoddel(int idOdel)
         {
-            var oddel = repo.DeleteOddel(idOdel);
+            var odd = repo.GetOddel(idOdel);
+            if (odd == null) throw new ArgumentException();
+           var oddel = repo.DeleteOddel(idOdel);
             return oddel;
         }
         public Oddel HandlerPostoddel(string Odel)
@@ -38,6 +40,8 @@ namespace Core.Handlers
         }
         public Oddel HandlerPutoddel(int id,string Odel)
         {
+            var odd = repo.GetOddel(id);
+            if (odd == null) throw new ArgumentException();
             var oddel = repo.PutOddel(id,Odel);
             return oddel;
         }

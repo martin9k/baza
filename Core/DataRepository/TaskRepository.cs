@@ -76,7 +76,7 @@ namespace Core.DataRepository
                 return korisnik;
             }
         }
-        public Zadaca PutZadaca(int id_zadaca, int id_proekt, int id_vraboten, int id_status, string datum_kreiranje, string datum_posledna_promena, string naslov, string opis, int estimacija, bool odobrena)
+        public Zadaca PutZadaca(int id_zadaca, int id_proekt, int id_vraboten, int id_status,string naslov, string opis, int estimacija, bool odobrena)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
@@ -85,8 +85,6 @@ namespace Core.DataRepository
                 param.Add("@id_zadaca", id_zadaca);
                 param.Add("@id_proekt", id_proekt);
                 param.Add("@id_status", id_status);
-                param.Add("@datum_kreiranje", datum_kreiranje);
-                param.Add("@datum_posledna_promena", datum_posledna_promena);
                 param.Add("@naslov", naslov);
                 param.Add("@opis", opis);
                 param.Add("@estimacija", estimacija);
@@ -287,7 +285,7 @@ namespace Core.DataRepository
                 return result;
             }
         }
-        public Vraboten PostVraboten(int id_kredencijali, int id_oddel, int id_pozicija, string ime, string prezime, string grad, string adresa, string telefonski_br)
+        public Vraboten PostVraboten(int id_kredencijali, int id_oddel, int id_pozicija, string ime, string prezime, string grad, string adresa, string telefonski_br,string email)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
@@ -300,12 +298,13 @@ namespace Core.DataRepository
                 param.Add("@grad", grad);
                 param.Add("@adresa", adresa);
                 param.Add("@telefonski_br", telefonski_br);
+                param.Add("@email", email);
                 Vraboten result =
                     conn.Query<Vraboten>(ConfigurationManager.AppSettings["spDodadiVraboten"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
             }
         }
-        public Vraboten PutVraboten(int id_vraboten, int id_kredencijali, int id_oddel, int id_pozicija, string ime, string prezime, string grad, string adresa, string telefonski_br)
+        public Vraboten PutVraboten(int id_vraboten, int id_kredencijali, int id_oddel, int id_pozicija, string ime, string prezime, string grad, string adresa, string telefonski_br,string email)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
@@ -319,6 +318,7 @@ namespace Core.DataRepository
                 param.Add("@grad", grad);
                 param.Add("@adresa", adresa);
                 param.Add("@telefonski_br", telefonski_br);
+                param.Add("@email", email);
                 Vraboten result =
                     conn.Query<Vraboten>(ConfigurationManager.AppSettings["spIzmeniVraboten"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;

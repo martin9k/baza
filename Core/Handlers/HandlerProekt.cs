@@ -27,6 +27,8 @@ namespace Core.Handlers
         }
         public Proekt HandlerDeleteproekt(int idStatus)
         {
+            var pro = repo.GetProekt(idStatus);
+            if (pro == null) throw new ArgumentException();
             var stat = repo.DeleteProekt(idStatus);
             return stat;
         }
@@ -37,6 +39,9 @@ namespace Core.Handlers
         }
         public Proekt HandlerPutproekt(int id, string proekt_ime)
         {
+            var pro = repo.GetProekt(id);
+            if (pro == null) throw new ArgumentException();
+
             var status = repo.PutProekt(id, proekt_ime);
             return status;
         }

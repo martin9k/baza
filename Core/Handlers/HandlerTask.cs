@@ -35,9 +35,9 @@ namespace Core.Handlers
             var stat = repo.PostZadaca(idproekt,idvrab,naslov,opis,est,odo,idstatus);
             return stat;
         }
-        public Zadaca HandlerPutzadaca(int idzad,int idproekt, int idvrab, int idstaus, string datumk, string datump, string naslov,string opis, int est, bool odob)
+        public Zadaca HandlerPutzadaca(int idzad,int idproekt, int idvrab, int idstaus,string naslov,string opis, int est, bool odob)
         {
-            var stat = repo.PutZadaca(idzad,idproekt, idvrab, idstaus, datumk, datump, naslov,opis,est, odob);
+            var stat = repo.PutZadaca(idzad,idproekt, idvrab, idstaus,naslov,opis,est, odob);
             return stat;
         }
         public Zadaca HandlerUpdateStatus(int idzad, int idstaus)

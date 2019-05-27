@@ -77,11 +77,11 @@ namespace WebApplication1.Controllers
         }
         [HttpPut]
         [Route("")]
-        public IHttpActionResult PutZadaca([FromUri]int id_zadaca,int id_proekt, int id_vraboten, int id_status, string datum_kreiranje, string datum_posledna_promena, string naslov,string opis, int estimacija, bool odobrena)
+        public IHttpActionResult PutZadaca([FromUri]int id_zadaca,int id_proekt, int id_vraboten, int id_status,string naslov,string opis, int estimacija, bool odobrena)
         {
             try
             {
-                var response = handlerTask.HandlerPutzadaca(id_zadaca,id_proekt, id_vraboten, id_status, datum_kreiranje, datum_posledna_promena, naslov,opis,estimacija, odobrena);
+                var response = handlerTask.HandlerPutzadaca(id_zadaca,id_proekt, id_vraboten, id_status,naslov,opis,estimacija, odobrena);
                 return Ok(response);
             }
             catch (Exception e)

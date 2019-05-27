@@ -28,6 +28,8 @@ namespace Core.Handlers
         }
         public Pozicija HandlerDeletepozicija(int idPozicija)
         {
+            var poz = repo.GetPozicija(idPozicija);
+            if (poz == null) throw new ArgumentException();
             var pozicija = repo.DeletePozicija(idPozicija);
             return pozicija;
         }
@@ -38,6 +40,8 @@ namespace Core.Handlers
         }
         public Pozicija HandlerPutpozicija(int id, string pozicija)
         {
+            var poz = repo.GetPozicija(id);
+            if (poz == null) throw new ArgumentException();
             var pozicii = repo.PutPozicija(id, pozicija);
             return pozicii;
         }

@@ -59,6 +59,10 @@ namespace WebApplication1.Controllers
                 var response = handlerOddel.HandlerDeleteoddel(id);
                 return Ok(response);
             }
+            catch (ArgumentException ex)
+            {
+                return NotFound();
+            }
             catch (Exception e)
             {
                 throw;
@@ -88,6 +92,10 @@ namespace WebApplication1.Controllers
             {
                 var response = handlerOddel.HandlerPutoddel(id,ime);
                 return Ok(response);
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound();
             }
             catch (Exception e)
             {

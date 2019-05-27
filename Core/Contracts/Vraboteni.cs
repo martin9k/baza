@@ -9,5 +9,6 @@
         public string Adresa { get; set; }
         public string Telefonski_br { get; set; }
         public string Pozicija { get; set; }
+        public string email { get; set; }
     }
 }

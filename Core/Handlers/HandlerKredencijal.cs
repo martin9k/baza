@@ -33,6 +33,8 @@ namespace Core.Handlers
         }
         public Kredencijal HandlerDeletekredencija(int idOdel)
         {
+            var kre = repo.GetKredencijal(idOdel);
+            if (kre == null) throw new ArgumentException();
             var oddel = repo.DeleteKredencijal(idOdel);
             return oddel;
         }
@@ -43,6 +45,8 @@ namespace Core.Handlers
         }
         public Kredencijal HandlerPutkredencijal(int id, string Odel,string n,bool aktiven)
         {
+            var kre = repo.GetKredencijal(id);
+            if (kre == null) throw new ArgumentException();
             var oddel = repo.PutKredencijal(id, Odel,n,aktiven);
             return oddel;
         }
