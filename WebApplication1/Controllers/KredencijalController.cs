@@ -38,7 +38,14 @@ namespace WebApplication1.Controllers
         {
             try
             { var  response = handlerKredencijal.HandlerGetKorsnik(korisnickoime,lozinka);
-              return Ok(response);
+                if (response == null)
+                {
+                    return Ok(response);
+                }
+                else
+                {
+                    return Content(HttpStatusCode.Forbidden, "Access denied.");
+                }
             }
             catch (Exception e)
             {

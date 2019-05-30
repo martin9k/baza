@@ -252,6 +252,18 @@ namespace Core.DataRepository
                 return result;
             }
         }
+        public Zadaca OdobriZadaca(int id_vraboten, int id_zadaca)
+        {
+            using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@vraboten", id_vraboten);
+                param.Add("@id_zadaca", id_zadaca);
+                Zadaca result =
+                    conn.Query<Zadaca>(ConfigurationManager.AppSettings["spOdobri"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return result;
+            }
+        }
         public List<Vraboten> GetVraboteni()
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))

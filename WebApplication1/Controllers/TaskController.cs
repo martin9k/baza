@@ -63,7 +63,7 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
         [Route("")]
-        public IHttpActionResult PostZadaca([FromUri]int id_proekt, int id_vraboten,string naslov,string opis, int estimacija)
+        public IHttpActionResult PostZadaca([FromUri]int id_proekt, int id_vraboten, string naslov, string opis, int estimacija)
         {
             try
             {
@@ -77,11 +77,11 @@ namespace WebApplication1.Controllers
         }
         [HttpPut]
         [Route("")]
-        public IHttpActionResult PutZadaca([FromUri]int id_zadaca,int id_proekt, int id_vraboten, int id_status,string naslov,string opis, int estimacija, bool odobrena)
+        public IHttpActionResult PutZadaca([FromUri]int id_zadaca, int id_proekt, int id_vraboten, int id_status, string naslov, string opis, int estimacija, bool odobrena)
         {
             try
             {
-                var response = handlerTask.HandlerPutzadaca(id_zadaca,id_proekt, id_vraboten, id_status,naslov,opis,estimacija, odobrena);
+                var response = handlerTask.HandlerPutzadaca(id_zadaca, id_proekt, id_vraboten, id_status, naslov, opis, estimacija, odobrena);
                 return Ok(response);
             }
             catch (Exception e)
@@ -91,12 +91,40 @@ namespace WebApplication1.Controllers
         }
         [HttpPut]
         [Route("update")]
-        public IHttpActionResult UpdateStatus([FromUri]int id_zadaca,int id_status)
+        public IHttpActionResult UpdateStatus([FromUri]int id_zadaca, int id_status)
         {
             try
             {
                 var response = handlerTask.HandlerUpdateStatus(id_zadaca, id_status);
-                return Ok(response);
+                if (response == null)
+                {
+                    return Ok(response);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+        [HttpPut]
+        [Route("odobri")]
+        public IHttpActionResult OdobriStatus([FromUri]int id_zadaca, int id_vraboten)
+        {
+            try
+            {
+                var response = handlerTask.OdobriZadaca(id_zadaca, id_vraboten);
+                if (response == null)
+                {
+                    return Ok(response);
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
             catch (Exception e)
             {

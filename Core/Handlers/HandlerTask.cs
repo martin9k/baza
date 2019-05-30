@@ -40,6 +40,15 @@ namespace Core.Handlers
             var stat = repo.PutZadaca(idzad,idproekt, idvrab, idstaus,naslov,opis,est, odob);
             return stat;
         }
+       public Zadaca OdobriZadaca (int idvrab,int idzad)
+        {
+            var stat = repo.OdobriZadaca(idvrab, idzad);
+            if (stat !=null)
+            {
+                return stat;
+            }
+        }
+
         public Zadaca HandlerUpdateStatus(int idzad, int idstaus)
         {
             var stat = repo.UpdateStatus(idzad,idstaus);
