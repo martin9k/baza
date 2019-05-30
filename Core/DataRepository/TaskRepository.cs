@@ -252,13 +252,13 @@ namespace Core.DataRepository
                 return result;
             }
         }
-        public Zadaca OdobriZadaca(int id_vraboten, int id_zadaca)
+        public Zadaca OdobriZadaca(int id_zadaca,int id_vraboten)
         {
             using (var conn = _dbAccess.GetDbConection("TaskManagerDB"))
             {
                 DynamicParameters param = new DynamicParameters();
-                param.Add("@vraboten", id_vraboten);
                 param.Add("@id_zadaca", id_zadaca);
+                param.Add("@id_vraboten", id_vraboten);
                 Zadaca result =
                     conn.Query<Zadaca>(ConfigurationManager.AppSettings["spOdobri"], param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return result;
