@@ -67,10 +67,10 @@ namespace WebApplication1.Controllers
             [HttpPost]
             [Route("")]
             public IHttpActionResult PostProekt([FromUri] string ime)
-            {
+            {if (string.IsNullOrWhiteSpace(ime)) return BadRequest("proekt e prazen");
                 try
                 {
-                    var response = handlerProekt.HandlerPostproekt(ime);
+                    var response = handlerProekt.HandlerPostproekt(ime.Trim());
                     return Ok(response);
                 }
                 catch (Exception e)
@@ -83,9 +83,10 @@ namespace WebApplication1.Controllers
             [Route("")]
             public IHttpActionResult PutProekt([FromUri] int id, string ime)
             {
-                try
+            if (string.IsNullOrWhiteSpace(ime)) return BadRequest("proekt e prazen");
+            try
                 {
-                    var response = handlerProekt.HandlerPutproekt(id, ime);
+                    var response = handlerProekt.HandlerPutproekt(id, ime.Trim());
                     return Ok(response);
                 }
             catch (ArgumentException ex)

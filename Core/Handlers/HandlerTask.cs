@@ -43,11 +43,7 @@ namespace Core.Handlers
        public Zadaca OdobriZadaca (int idzad,int idvrab)
         {
             var stat = repo.OdobriZadaca(idzad, idvrab);
-            if (stat !=null)
-            {
-                return stat;
-            }
-            return null;
+            return stat;
         }
 
         public Zadaca HandlerUpdateStatus(int idzad, int idstaus)

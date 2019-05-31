@@ -63,10 +63,10 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [Route("")]
         public IHttpActionResult PostStatus([FromUri] string ime)
-        {
+        {if (string.IsNullOrWhiteSpace(ime)) return BadRequest("status e prazen");
             try
             {
-                var response = handlerStatus.HandlerPoststatus(ime);
+                var response = handlerStatus.HandlerPoststatus(ime.Trim());
                 return Ok(response);
             }
             catch (Exception e)
@@ -79,9 +79,10 @@ namespace WebApplication1.Controllers
         [Route("")]
         public IHttpActionResult PutStatus([FromUri] int id, string ime)
         {
+            if (string.IsNullOrWhiteSpace(ime)) return BadRequest("status e prazen");
             try
             {
-                var response = handlerStatus.HandlerPutstatus(id, ime);
+                var response = handlerStatus.HandlerPutstatus(id, ime.Trim());
                 return Ok(response);
             }
             catch (Exception e)

@@ -72,10 +72,10 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [Route("")]
         public IHttpActionResult PostOddel([FromUri] string ime)
-        {
+        { if (string.IsNullOrWhiteSpace(ime)) return BadRequest("oddelot e prazen");
             try
             {
-                var response = handlerOddel.HandlerPostoddel(ime);
+                var response = handlerOddel.HandlerPostoddel(ime.Trim());
                 return Ok(response);
             }
             catch (Exception e)
@@ -88,9 +88,10 @@ namespace WebApplication1.Controllers
         [Route("")]
         public IHttpActionResult PutOddel([FromUri] int id,string ime)
         {
+            if (string.IsNullOrWhiteSpace(ime)) return BadRequest("oddelot e prazen");
             try
             {
-                var response = handlerOddel.HandlerPutoddel(id,ime);
+                var response = handlerOddel.HandlerPutoddel(id,ime.Trim());
                 return Ok(response);
             }
             catch (ArgumentException ex)

@@ -67,10 +67,10 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [Route("")]
         public IHttpActionResult PostPozicija([FromUri] string ime)
-        {
+        {if (string.IsNullOrWhiteSpace(ime)) return BadRequest("pozicijata e prazna");
             try
             {
-                var response = handlerPozicija.HandlerPostpozicija(ime);
+                var response = handlerPozicija.HandlerPostpozicija(ime.Trim());
                 return Ok(response);
             }
             catch (Exception e)
@@ -83,9 +83,10 @@ namespace WebApplication1.Controllers
         [Route("")]
         public IHttpActionResult PutPozicija([FromUri] int id, string ime)
         {
+            if (string.IsNullOrWhiteSpace(ime)) return BadRequest("pozicijata e prazna");
             try
             {
-                var response = handlerPozicija.HandlerPutpozicija(id, ime);
+                var response = handlerPozicija.HandlerPutpozicija(id, ime.Trim());
                 return Ok(response);
             }
             catch (ArgumentException ex)

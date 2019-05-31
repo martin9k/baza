@@ -69,10 +69,15 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [Route("")]
         public IHttpActionResult PostVraboten([FromUri]int id_kredencijali,int id_oddel,int id_pozicija,string ime, string prezime, string grad, string adresa, string telefonski_broj,string mail)
-        {
+        {if (string.IsNullOrWhiteSpace(ime)) return BadRequest("ime e prazno");
+            if (string.IsNullOrWhiteSpace(prezime)) return BadRequest("prezime e prazno");
+            if (string.IsNullOrWhiteSpace(grad)) return BadRequest("grad e prazno");
+            if (string.IsNullOrWhiteSpace(adresa)) return BadRequest("adresa e prazno");
+            if (string.IsNullOrWhiteSpace(telefonski_broj)) return BadRequest("telefonski_broj e prazno");
+            if (string.IsNullOrWhiteSpace(mail)) return BadRequest("mail e prazno");
             try
             {
-                var response = handlerVraboten.HandlerPostvraboten(id_kredencijali, id_oddel,id_pozicija,ime, prezime,grad,adresa,telefonski_broj,mail);
+                var response = handlerVraboten.HandlerPostvraboten(id_kredencijali, id_oddel,id_pozicija,ime.Trim(), prezime.Trim(), grad.Trim(), adresa.Trim(), telefonski_broj.Trim(), mail.Trim());
                 return Ok(response);
             }
             catch (Exception e)
@@ -84,9 +89,15 @@ namespace WebApplication1.Controllers
         [Route("")]
         public IHttpActionResult PutVraboten([FromUri]int id_vraboten,int id_kredencijali, int id_oddel, int id_pozicija, string ime, string prezime, string grad, string adresa, string telefonski_broj,string mail)
         {
+            if (string.IsNullOrWhiteSpace(ime)) return BadRequest("ime e prazno");
+            if (string.IsNullOrWhiteSpace(prezime)) return BadRequest("prezime e prazno");
+            if (string.IsNullOrWhiteSpace(grad)) return BadRequest("grad e prazno");
+            if (string.IsNullOrWhiteSpace(adresa)) return BadRequest("adresa e prazno");
+            if (string.IsNullOrWhiteSpace(telefonski_broj)) return BadRequest("telefonski_broj e prazno");
+            if (string.IsNullOrWhiteSpace(mail)) return BadRequest("mail e prazno");
             try
             {
-                var response = handlerVraboten.HandlerPutvraboten(id_vraboten,id_kredencijali, id_oddel, id_pozicija, ime, prezime, grad, adresa, telefonski_broj,mail);
+                var response = handlerVraboten.HandlerPutvraboten(id_vraboten,id_kredencijali, id_oddel, id_pozicija, ime.Trim(), prezime.Trim(), grad.Trim(), adresa.Trim(), telefonski_broj.Trim(), mail.Trim());
                 return Ok(response);
             }
             catch (ArgumentException ex)

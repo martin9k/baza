@@ -64,10 +64,11 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [Route("")]
         public IHttpActionResult PostZadaca([FromUri]int id_proekt, int id_vraboten, string naslov, string opis, int estimacija)
-        {
+        {if (string.IsNullOrWhiteSpace(naslov)) return BadRequest("naslovot e prazen");
+            if (string.IsNullOrWhiteSpace(opis)) return BadRequest("opisot e prazen");
             try
             {
-                var response = handlerTask.HandlerPostzadaca(id_proekt, id_vraboten, naslov, opis, estimacija);
+                var response = handlerTask.HandlerPostzadaca(id_proekt, id_vraboten, naslov.Trim(), opis.Trim(), estimacija);
                 return Ok(response);
             }
             catch (Exception e)
@@ -79,9 +80,11 @@ namespace WebApplication1.Controllers
         [Route("")]
         public IHttpActionResult PutZadaca([FromUri]int id_zadaca, int id_proekt, int id_vraboten, int id_status, string naslov, string opis, int estimacija, bool odobrena)
         {
+            if (string.IsNullOrWhiteSpace(naslov)) return BadRequest("naslovot e prazen");
+            if (string.IsNullOrWhiteSpace(opis)) return BadRequest("opisot e prazen");
             try
             {
-                var response = handlerTask.HandlerPutzadaca(id_zadaca, id_proekt, id_vraboten, id_status, naslov, opis, estimacija, odobrena);
+                var response = handlerTask.HandlerPutzadaca(id_zadaca, id_proekt, id_vraboten, id_status, naslov.Trim(), opis.Trim(), estimacija, odobrena);
                 return Ok(response);
             }
             catch (Exception e)
@@ -117,9 +120,9 @@ namespace WebApplication1.Controllers
             try
             {
                 var response = handlerTask.OdobriZadaca(id_zadaca, id_vraboten);
-                if (response == null)
+                if (response != null && response.odobrena)
                 {
-                    return Ok(response);
+                    return Ok();
                 }
                 else
                 {

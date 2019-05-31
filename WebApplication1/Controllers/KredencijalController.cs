@@ -80,10 +80,11 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [Route("")]
         public IHttpActionResult PostKredencijal([FromUri]string korisnickoIme, string lozinka,bool aktiven)
-        {
+        {    if (string.IsNullOrWhiteSpace(korisnickoIme)) return BadRequest("korisnicko ime e prazno");
+            if (string.IsNullOrWhiteSpace(lozinka)) return BadRequest("lozinka e prazno");
             try
             {
-                var response = handlerKredencijal.HandlerPostkredencijal(korisnickoIme,lozinka,aktiven);
+                var response = handlerKredencijal.HandlerPostkredencijal(korisnickoIme.Trim(),lozinka.Trim(),aktiven);
                 return Ok(response);
             }
             catch (Exception e)
@@ -95,9 +96,11 @@ namespace WebApplication1.Controllers
         [Route("")]
         public IHttpActionResult PutKredencijal([FromUri]int id_Kredencijal,string korisnickoIme, string lozinka,bool aktiven)
         {
+            if (string.IsNullOrWhiteSpace(korisnickoIme)) return BadRequest("korisnicko ime e prazno");
+            if (string.IsNullOrWhiteSpace(lozinka)) return BadRequest("lozinka e prazno");
             try
             {
-                var response = handlerKredencijal.HandlerPutkredencijal(id_Kredencijal,korisnickoIme,lozinka,aktiven);
+                var response = handlerKredencijal.HandlerPutkredencijal(id_Kredencijal,korisnickoIme.Trim(),lozinka.Trim(),aktiven);
                 return Ok(response);
             }
             catch (ArgumentException ex)
