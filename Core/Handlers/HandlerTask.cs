@@ -27,29 +27,37 @@ namespace Core.Handlers
         }
         public Zadaca HandlerDeletezadaca(int idTask)
         {
-            var stat = repo.DeleteZadaca(idTask);
-            return stat;
+            var stat = repo.GetZadaca(idTask);
+            if(stat==null)throw new ArgumentException();
+            var statu = repo.DeleteZadaca(idTask);
+            return statu;
         }
         public Zadaca HandlerPostzadaca(int idproekt, int idvrab, string naslov, string opis, int est, bool odo = false, int idstatus = 1)
         {
-            var stat = repo.PostZadaca(idproekt,idvrab,naslov,opis,est,odo,idstatus);
-            return stat;
+            var statu = repo.PostZadaca(idproekt,idvrab,naslov,opis,est,odo,idstatus);
+            return statu;
         }
         public Zadaca HandlerPutzadaca(int idzad,int idproekt, int idvrab, int idstaus,string naslov,string opis, int est, bool odob)
         {
-            var stat = repo.PutZadaca(idzad,idproekt, idvrab, idstaus,naslov,opis,est, odob);
-            return stat;
+            var stat = repo.GetZadaca(idzad);
+            if (stat == null) throw new ArgumentException();
+            var statu = repo.PutZadaca(idzad,idproekt, idvrab, idstaus,naslov,opis,est, odob);
+            return statu;
         }
        public Zadaca OdobriZadaca (int idzad,int idvrab)
         {
-            var stat = repo.OdobriZadaca(idzad, idvrab);
-            return stat;
+            var stat = repo.GetZadaca(idzad);
+            if (stat == null) throw new ArgumentException();
+            var statu = repo.OdobriZadaca(idzad, idvrab);
+            return statu;
         }
 
         public Zadaca HandlerUpdateStatus(int idzad, int idstaus)
         {
-            var stat = repo.UpdateStatus(idzad,idstaus);
-            return stat;
+            var stat = repo.GetZadaca(idzad);
+            if (stat == null) throw new ArgumentException();
+            var statu = repo.UpdateStatus(idzad,idstaus);
+            return statu;
         }
     }
 }

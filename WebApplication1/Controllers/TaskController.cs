@@ -55,6 +55,10 @@ namespace WebApplication1.Controllers
                 var response = handlerTask.HandlerDeletezadaca(id4);
                 return Ok(response);
             }
+            catch (ArgumentException ex)
+            {
+                return NotFound();
+            }
             catch (Exception e)
             {
                 throw;
@@ -71,6 +75,10 @@ namespace WebApplication1.Controllers
                 var response = handlerTask.HandlerPostzadaca(id_proekt, id_vraboten, naslov.Trim(), opis.Trim(), estimacija);
                 return Ok(response);
             }
+            catch (ArgumentException ex)
+            {
+                return NotFound();
+            }
             catch (Exception e)
             {
                 throw;
@@ -86,6 +94,10 @@ namespace WebApplication1.Controllers
             {
                 var response = handlerTask.HandlerPutzadaca(id_zadaca, id_proekt, id_vraboten, id_status, naslov.Trim(), opis.Trim(), estimacija, odobrena);
                 return Ok(response);
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound();
             }
             catch (Exception e)
             {
@@ -108,6 +120,10 @@ namespace WebApplication1.Controllers
                     return BadRequest();
                 }
             }
+            catch (ArgumentException ex)
+            {
+                return NotFound();
+            }
             catch (Exception e)
             {
                 throw;
@@ -128,6 +144,10 @@ namespace WebApplication1.Controllers
                 {
                     return BadRequest();
                 }
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound();
             }
             catch (Exception e)
             {
