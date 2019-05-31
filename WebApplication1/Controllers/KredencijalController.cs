@@ -35,10 +35,11 @@ namespace WebApplication1.Controllers
         [HttpGet]
         [Route("validacija")]
         public IHttpActionResult GetKorisnik([FromUri] string korisnickoime,string lozinka)
-        {
+        {if (string.IsNullOrWhiteSpace(korisnickoime)) return BadRequest("korisnickoime e prazno");
+            if (string.IsNullOrWhiteSpace(lozinka)) return BadRequest("korisnickoime e prazno");
             try
-            { var  response = handlerKredencijal.HandlerGetKorsnik(korisnickoime,lozinka);
-                if (response == null)
+            { var  response = handlerKredencijal.HandlerGetKorsnik(korisnickoime.Trim(),lozinka.Trim());
+                if (response != null)
                 {
                     return Ok(response);
                 }

@@ -27,8 +27,10 @@ namespace Core.Handlers
         }
         public Status HandlerDeletestatus(int idStatus)
         {
-            var stat = repo.DeleteStatus(idStatus);
-            return stat;
+            var odd = repo.GetStatus(idStatus);
+            if (odd == null) throw new ArgumentException();
+            var oddel = repo.DeleteStatus(idStatus);
+            return oddel;
         }
         public Status HandlerPoststatus(string opis)
         {
@@ -37,8 +39,10 @@ namespace Core.Handlers
         }
         public Status HandlerPutstatus(int id, string Odel)
         {
-            var status = repo.PutStatus(id, Odel);
-            return status;
+            var odd = repo.GetStatus(id);
+            if (odd == null) throw new ArgumentException();
+            var oddel = repo.DeleteStatus(id);
+            return oddel;
         }
     }
 }
