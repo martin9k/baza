@@ -55,6 +55,10 @@ namespace WebApplication1.Controllers
                 var response = handlerStatus.HandlerDeletestatus(id3);
                 return Ok(response);
             }
+            catch (ArgumentException ex)
+            {
+                return NotFound();
+            }
             catch (Exception e)
             {
                 throw;
@@ -84,6 +88,10 @@ namespace WebApplication1.Controllers
             {
                 var response = handlerStatus.HandlerPutstatus(id, ime.Trim());
                 return Ok(response);
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound();
             }
             catch (Exception e)
             {
